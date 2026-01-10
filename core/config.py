@@ -17,6 +17,10 @@ class Settings(BaseSettings):
     COLBERT_MODEL: str = "colbert-ir/colbertv2.0"  # Standard ColBERT
     LLM_MODEL: str = "llama-3.3-70b-versatile"
 
+    # API Server
+    API_HOST: str
+    API_PORT: int
+
     class Config:
         env_file = ".env"
 

@@ -26,6 +26,7 @@ class ProtocolSearchRequest(BaseModel):
 
 class RetrievedChunk(BaseModel):
     content: str
+    file_name: str
     source: str
     score: float
     page_number: Optional[int] = None

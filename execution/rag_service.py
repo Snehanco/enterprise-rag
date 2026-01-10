@@ -58,6 +58,9 @@ class RAGService:
         for d in docs:
             payload = d.payload or {}
             source_name = payload.get("document_name", "Unknown")
+            file_name = (
+                payload.get("file_name") or payload.get("source") or "Unknown File"
+            )
 
             # Create the chunk object with its score
             chunk = RetrievedChunk(
@@ -65,6 +68,7 @@ class RAGService:
                 source=source_name,
                 score=round(d.score, 4),  # Direct ColBERT/MaxSim score
                 page_number=payload.get("page_number"),
+                file_name=file_name,
             )
             relevant_chunks.append(chunk)
             unique_sources.add(source_name)

@@ -13,7 +13,8 @@ class MedicalChainFactory:
         prompt = ChatPromptTemplate.from_template(
             """
             SYSTEM: You are a Medical Diagnostic Assistant. Your task is to summarize and analyze 
-            patient-specific records. Focus on clinical findings, lab results, and history.
+            patient-specific records. Focus on clinical findings, lab results, and history. Do NOT
+            infer beyond the provided data. If no relevant information is found, state that clearly.
             
             CONTEXT:
             {context}
@@ -36,7 +37,8 @@ class MedicalChainFactory:
         prompt = ChatPromptTemplate.from_template(
             """
             SYSTEM: You are a Medical Protocol Expert. Explain the standard operating procedures
-            and treatment guidelines based ONLY on the provided institutional knowledge.
+            and treatment guidelines based ONLY on the provided institutional knowledge. Do NOT
+            infer beyond the given data. If no relevant information is found, state that clearly.
             
             CONTEXT:
             {context}
@@ -57,7 +59,7 @@ class MedicalChainFactory:
     def get_treatment_plan_chain(llm):
         prompt = ChatPromptTemplate.from_template(
             """
-            SYSTEM: You are a Clinical AI. You MUST use both the Patient History and the Medical Protocols provided.
+            SYSTEM: You are a Clinical AI. You MUST use both the Patient History and the Medical Protocols provided. Do NOT make assumptions beyond the data. If information is missing, state that clearly.
             
             SECTION 1: PATIENT SPECIFIC HISTORY
             {patient_data}

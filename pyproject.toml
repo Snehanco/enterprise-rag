@@ -20,4 +20,6 @@ dependencies = [
     "uvicorn>=0.38.0",
     "pymupdf>=1.26.7",
     "langchain-groq>=0.1.5",
+    "streamlit>=1.52.2",
+    "requests>=2.32.5",
 ]
