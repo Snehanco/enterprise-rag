@@ -95,6 +95,11 @@ class TextCleaner:
                 logger.debug("No PII detected in text")
                 return text
 
+            # Filter out DATE_TIME entities to preserve dates/times in text
+            results = [
+                result for result in results if result.entity_type != "DATE_TIME"
+            ]
+
             # Log detected PII for monitoring
             pii_types = set(result.entity_type for result in results)
             logger.debug(f"Detected PII types: {pii_types}")
