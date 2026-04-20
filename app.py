@@ -2,9 +2,13 @@ import streamlit as st
 import requests
 import json
 from typing import Dict, Any
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
 
 # --- Configuration ---
-API_BASE_URL = "http://localhost:8000"
+API_BASE_URL = os.getenv("API_URL")
 
 # --- Page Config ---
 st.set_page_config(
