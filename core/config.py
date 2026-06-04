@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     # API Server
     API_HOST: str
     API_PORT: int
+    API_URL: str = "http://localhost:8000"
 
     class Config:
         env_file = ".env"
